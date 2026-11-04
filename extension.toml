@@ -1,0 +1,28 @@
+id = "renpy"
+name = "Ren'Py"
+version = "0.2.1"
+schema_version = 1
+description = "Ren'Py language support for Zed: syntax highlighting, embedded Python, outline and formatting with renpy-language-server."
+repository = "https://github.com/rockettap/renpy-zed"
+authors = ["Oleksandr <67645530+rockettap@users.noreply.github.com>"]
+languages = ["languages/renpy"]
+snippets = ["./snippets/ren'py.json"]
+
+[lib]
+kind = "Rust"
+version = "0.7.0"
+
+[grammars.renpy]
+repository = "https://github.com/rockettap/renpy-tree-sitter"
+rev = "4fd149850850ad9c365d6ffbb9db143620889649"
+
+[language_servers.renpy-language-server]
+name = "renpy-language-server"
+languages = ["Ren'Py"]
+
+[language_servers.renpy-language-server.language_ids]
+"Ren'Py" = "renpy"
+
+[debug_adapters.renpy]
+
+[debug_locators.renpy]

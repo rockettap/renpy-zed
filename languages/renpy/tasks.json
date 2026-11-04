@@ -1,0 +1,138 @@
+[
+  {
+    "label": "Ren'Py: run game",
+    "command": "sh",
+    "args": [
+      "-c",
+      "'f=\"$1\"; row=\"$2\"; mode=\"$3\"\ncase \"$f\" in\n  */game/*) p=\"${f%/game/*}\"; rel=\"game/${f##*/game/}\" ;;\n  *) echo \"$f is not inside a game/ folder\" >&2; exit 1 ;;\nesac\nsdk=\"${RENPY_SDK:-}\"\nif [ -n \"$sdk\" ] && [ -f \"$sdk\" ]; then sdk=$(dirname \"$sdk\"); fi\nif [ -n \"$sdk\" ]; then\n  if [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"RENPY_SDK is set but $sdk does not contain renpy.sh.\" >&2\n    exit 1\n  fi\nelse\n  sdk=$(find \"$HOME\" \"$HOME/Documents\" \"$HOME/Downloads\" \"$HOME/Desktop\" \"$HOME/Applications\" /Applications -maxdepth 1 -type d -name \"renpy-*-sdk\" 2>/dev/null | sort -V | tail -n 1)\n  if [ -z \"$sdk\" ] || [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"Ren-Py SDK not found. Set RENPY_SDK to the SDK folder, the one containing renpy.sh.\" >&2\n    exit 1\n  fi\nfi\ncase \"$mode\" in\n  run) set -- \"$p\" run ;;\n  warp) set -- \"$p\" run --warp \"$rel:$row\" ;;\n  lint) set -- \"$p\" lint ;;\n  compile) set -- \"$p\" compile ;;\n  dialogue) set -- \"$p\" dialogue None ;;\n  rmpersistent) set -- \"$p\" rmpersistent ;;\n  *) echo \"Unknown Ren-Py task mode: $mode\" >&2; exit 1 ;;\nesac\nexec \"$sdk/renpy.sh\" \"$@\"'",
+      "renpy-task",
+      "\"$ZED_FILE\"",
+      "$ZED_ROW",
+      "run"
+    ],
+    "env": {
+      "RENPY_ZED_TASK": "run"
+    },
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "save": "all"
+  },
+  {
+    "label": "Ren'Py: run from line $ZED_ROW",
+    "command": "sh",
+    "args": [
+      "-c",
+      "'f=\"$1\"; row=\"$2\"; mode=\"$3\"\ncase \"$f\" in\n  */game/*) p=\"${f%/game/*}\"; rel=\"game/${f##*/game/}\" ;;\n  *) echo \"$f is not inside a game/ folder\" >&2; exit 1 ;;\nesac\nsdk=\"${RENPY_SDK:-}\"\nif [ -n \"$sdk\" ] && [ -f \"$sdk\" ]; then sdk=$(dirname \"$sdk\"); fi\nif [ -n \"$sdk\" ]; then\n  if [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"RENPY_SDK is set but $sdk does not contain renpy.sh.\" >&2\n    exit 1\n  fi\nelse\n  sdk=$(find \"$HOME\" \"$HOME/Documents\" \"$HOME/Downloads\" \"$HOME/Desktop\" \"$HOME/Applications\" /Applications -maxdepth 1 -type d -name \"renpy-*-sdk\" 2>/dev/null | sort -V | tail -n 1)\n  if [ -z \"$sdk\" ] || [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"Ren-Py SDK not found. Set RENPY_SDK to the SDK folder, the one containing renpy.sh.\" >&2\n    exit 1\n  fi\nfi\ncase \"$mode\" in\n  run) set -- \"$p\" run ;;\n  warp) set -- \"$p\" run --warp \"$rel:$row\" ;;\n  lint) set -- \"$p\" lint ;;\n  compile) set -- \"$p\" compile ;;\n  dialogue) set -- \"$p\" dialogue None ;;\n  rmpersistent) set -- \"$p\" rmpersistent ;;\n  *) echo \"Unknown Ren-Py task mode: $mode\" >&2; exit 1 ;;\nesac\nexec \"$sdk/renpy.sh\" \"$@\"'",
+      "renpy-task",
+      "\"$ZED_FILE\"",
+      "$ZED_ROW",
+      "warp"
+    ],
+    "env": {
+      "RENPY_ZED_TASK": "warp"
+    },
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "save": "all"
+  },
+  {
+    "label": "Ren'Py: run from label $ZED_CUSTOM_renpy_label",
+    "command": "sh",
+    "args": [
+      "-c",
+      "'f=\"$1\"; row=\"$2\"; mode=\"$3\"\ncase \"$f\" in\n  */game/*) p=\"${f%/game/*}\"; rel=\"game/${f##*/game/}\" ;;\n  *) echo \"$f is not inside a game/ folder\" >&2; exit 1 ;;\nesac\nsdk=\"${RENPY_SDK:-}\"\nif [ -n \"$sdk\" ] && [ -f \"$sdk\" ]; then sdk=$(dirname \"$sdk\"); fi\nif [ -n \"$sdk\" ]; then\n  if [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"RENPY_SDK is set but $sdk does not contain renpy.sh.\" >&2\n    exit 1\n  fi\nelse\n  sdk=$(find \"$HOME\" \"$HOME/Documents\" \"$HOME/Downloads\" \"$HOME/Desktop\" \"$HOME/Applications\" /Applications -maxdepth 1 -type d -name \"renpy-*-sdk\" 2>/dev/null | sort -V | tail -n 1)\n  if [ -z \"$sdk\" ] || [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"Ren-Py SDK not found. Set RENPY_SDK to the SDK folder, the one containing renpy.sh.\" >&2\n    exit 1\n  fi\nfi\ncase \"$mode\" in\n  run) set -- \"$p\" run ;;\n  warp) set -- \"$p\" run --warp \"$rel:$row\" ;;\n  lint) set -- \"$p\" lint ;;\n  compile) set -- \"$p\" compile ;;\n  dialogue) set -- \"$p\" dialogue None ;;\n  rmpersistent) set -- \"$p\" rmpersistent ;;\n  *) echo \"Unknown Ren-Py task mode: $mode\" >&2; exit 1 ;;\nesac\nexec \"$sdk/renpy.sh\" \"$@\"'",
+      "renpy-task",
+      "\"$ZED_FILE\"",
+      "$ZED_ROW",
+      "warp"
+    ],
+    "env": {
+      "RENPY_ZED_TASK": "warp"
+    },
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "save": "all",
+    "tags": [
+      "renpy-label"
+    ]
+  },
+  {
+    "label": "Ren'Py: lint",
+    "command": "sh",
+    "args": [
+      "-c",
+      "'f=\"$1\"; row=\"$2\"; mode=\"$3\"\ncase \"$f\" in\n  */game/*) p=\"${f%/game/*}\"; rel=\"game/${f##*/game/}\" ;;\n  *) echo \"$f is not inside a game/ folder\" >&2; exit 1 ;;\nesac\nsdk=\"${RENPY_SDK:-}\"\nif [ -n \"$sdk\" ] && [ -f \"$sdk\" ]; then sdk=$(dirname \"$sdk\"); fi\nif [ -n \"$sdk\" ]; then\n  if [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"RENPY_SDK is set but $sdk does not contain renpy.sh.\" >&2\n    exit 1\n  fi\nelse\n  sdk=$(find \"$HOME\" \"$HOME/Documents\" \"$HOME/Downloads\" \"$HOME/Desktop\" \"$HOME/Applications\" /Applications -maxdepth 1 -type d -name \"renpy-*-sdk\" 2>/dev/null | sort -V | tail -n 1)\n  if [ -z \"$sdk\" ] || [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"Ren-Py SDK not found. Set RENPY_SDK to the SDK folder, the one containing renpy.sh.\" >&2\n    exit 1\n  fi\nfi\ncase \"$mode\" in\n  run) set -- \"$p\" run ;;\n  warp) set -- \"$p\" run --warp \"$rel:$row\" ;;\n  lint) set -- \"$p\" lint ;;\n  compile) set -- \"$p\" compile ;;\n  dialogue) set -- \"$p\" dialogue None ;;\n  rmpersistent) set -- \"$p\" rmpersistent ;;\n  *) echo \"Unknown Ren-Py task mode: $mode\" >&2; exit 1 ;;\nesac\nexec \"$sdk/renpy.sh\" \"$@\"'",
+      "renpy-task",
+      "\"$ZED_FILE\"",
+      "$ZED_ROW",
+      "lint"
+    ],
+    "env": {
+      "RENPY_ZED_TASK": "lint"
+    },
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "save": "all"
+  },
+  {
+    "label": "Ren'Py: compile",
+    "command": "sh",
+    "args": [
+      "-c",
+      "'f=\"$1\"; row=\"$2\"; mode=\"$3\"\ncase \"$f\" in\n  */game/*) p=\"${f%/game/*}\"; rel=\"game/${f##*/game/}\" ;;\n  *) echo \"$f is not inside a game/ folder\" >&2; exit 1 ;;\nesac\nsdk=\"${RENPY_SDK:-}\"\nif [ -n \"$sdk\" ] && [ -f \"$sdk\" ]; then sdk=$(dirname \"$sdk\"); fi\nif [ -n \"$sdk\" ]; then\n  if [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"RENPY_SDK is set but $sdk does not contain renpy.sh.\" >&2\n    exit 1\n  fi\nelse\n  sdk=$(find \"$HOME\" \"$HOME/Documents\" \"$HOME/Downloads\" \"$HOME/Desktop\" \"$HOME/Applications\" /Applications -maxdepth 1 -type d -name \"renpy-*-sdk\" 2>/dev/null | sort -V | tail -n 1)\n  if [ -z \"$sdk\" ] || [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"Ren-Py SDK not found. Set RENPY_SDK to the SDK folder, the one containing renpy.sh.\" >&2\n    exit 1\n  fi\nfi\ncase \"$mode\" in\n  run) set -- \"$p\" run ;;\n  warp) set -- \"$p\" run --warp \"$rel:$row\" ;;\n  lint) set -- \"$p\" lint ;;\n  compile) set -- \"$p\" compile ;;\n  dialogue) set -- \"$p\" dialogue None ;;\n  rmpersistent) set -- \"$p\" rmpersistent ;;\n  *) echo \"Unknown Ren-Py task mode: $mode\" >&2; exit 1 ;;\nesac\nexec \"$sdk/renpy.sh\" \"$@\"'",
+      "renpy-task",
+      "\"$ZED_FILE\"",
+      "$ZED_ROW",
+      "compile"
+    ],
+    "env": {
+      "RENPY_ZED_TASK": "compile"
+    },
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "save": "all"
+  },
+  {
+    "label": "Ren'Py: dialogue",
+    "command": "sh",
+    "args": [
+      "-c",
+      "'f=\"$1\"; row=\"$2\"; mode=\"$3\"\ncase \"$f\" in\n  */game/*) p=\"${f%/game/*}\"; rel=\"game/${f##*/game/}\" ;;\n  *) echo \"$f is not inside a game/ folder\" >&2; exit 1 ;;\nesac\nsdk=\"${RENPY_SDK:-}\"\nif [ -n \"$sdk\" ] && [ -f \"$sdk\" ]; then sdk=$(dirname \"$sdk\"); fi\nif [ -n \"$sdk\" ]; then\n  if [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"RENPY_SDK is set but $sdk does not contain renpy.sh.\" >&2\n    exit 1\n  fi\nelse\n  sdk=$(find \"$HOME\" \"$HOME/Documents\" \"$HOME/Downloads\" \"$HOME/Desktop\" \"$HOME/Applications\" /Applications -maxdepth 1 -type d -name \"renpy-*-sdk\" 2>/dev/null | sort -V | tail -n 1)\n  if [ -z \"$sdk\" ] || [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"Ren-Py SDK not found. Set RENPY_SDK to the SDK folder, the one containing renpy.sh.\" >&2\n    exit 1\n  fi\nfi\ncase \"$mode\" in\n  run) set -- \"$p\" run ;;\n  warp) set -- \"$p\" run --warp \"$rel:$row\" ;;\n  lint) set -- \"$p\" lint ;;\n  compile) set -- \"$p\" compile ;;\n  dialogue) set -- \"$p\" dialogue None ;;\n  rmpersistent) set -- \"$p\" rmpersistent ;;\n  *) echo \"Unknown Ren-Py task mode: $mode\" >&2; exit 1 ;;\nesac\nexec \"$sdk/renpy.sh\" \"$@\"'",
+      "renpy-task",
+      "\"$ZED_FILE\"",
+      "$ZED_ROW",
+      "dialogue"
+    ],
+    "env": {
+      "RENPY_ZED_TASK": "dialogue"
+    },
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "save": "all"
+  },
+  {
+    "label": "Ren'Py: remove persistent",
+    "command": "sh",
+    "args": [
+      "-c",
+      "'f=\"$1\"; row=\"$2\"; mode=\"$3\"\ncase \"$f\" in\n  */game/*) p=\"${f%/game/*}\"; rel=\"game/${f##*/game/}\" ;;\n  *) echo \"$f is not inside a game/ folder\" >&2; exit 1 ;;\nesac\nsdk=\"${RENPY_SDK:-}\"\nif [ -n \"$sdk\" ] && [ -f \"$sdk\" ]; then sdk=$(dirname \"$sdk\"); fi\nif [ -n \"$sdk\" ]; then\n  if [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"RENPY_SDK is set but $sdk does not contain renpy.sh.\" >&2\n    exit 1\n  fi\nelse\n  sdk=$(find \"$HOME\" \"$HOME/Documents\" \"$HOME/Downloads\" \"$HOME/Desktop\" \"$HOME/Applications\" /Applications -maxdepth 1 -type d -name \"renpy-*-sdk\" 2>/dev/null | sort -V | tail -n 1)\n  if [ -z \"$sdk\" ] || [ ! -f \"$sdk/renpy.sh\" ]; then\n    echo \"Ren-Py SDK not found. Set RENPY_SDK to the SDK folder, the one containing renpy.sh.\" >&2\n    exit 1\n  fi\nfi\ncase \"$mode\" in\n  run) set -- \"$p\" run ;;\n  warp) set -- \"$p\" run --warp \"$rel:$row\" ;;\n  lint) set -- \"$p\" lint ;;\n  compile) set -- \"$p\" compile ;;\n  dialogue) set -- \"$p\" dialogue None ;;\n  rmpersistent) set -- \"$p\" rmpersistent ;;\n  *) echo \"Unknown Ren-Py task mode: $mode\" >&2; exit 1 ;;\nesac\nexec \"$sdk/renpy.sh\" \"$@\"'",
+      "renpy-task",
+      "\"$ZED_FILE\"",
+      "$ZED_ROW",
+      "rmpersistent"
+    ],
+    "env": {
+      "RENPY_ZED_TASK": "rmpersistent"
+    },
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "save": "all"
+  }
+]

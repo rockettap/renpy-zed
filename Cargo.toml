@@ -1,0 +1,16 @@
+[package]
+name = "renpy-zed"
+version = "0.2.1"
+edition = "2021"
+authors = ["Oleksandr <67645530+rockettap@users.noreply.github.com>"]
+description = "Ren'Py language support for the Zed editor"
+repository = "https://github.com/rockettap/renpy-zed"
+license = "MIT"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
+[dependencies]
+zed_extension_api = "0.7.0"

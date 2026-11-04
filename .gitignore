@@ -1,0 +1,8 @@
+/target
+/tests/fixtures/tmp
+__pycache__/
+
+/grammars/
+*.wasm
+.DS_Store
+.ruff_cache/

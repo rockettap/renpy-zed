@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ren'Py launch configuration",
+  "description": "Launch a Ren'Py game through an installed SDK. Only launch is supported; breakpoints, stepping and variable inspection are not implemented yet.",
+  "type": "object",
+  "required": ["request"],
+  "properties": {
+    "adapter": {
+      "type": "string",
+      "description": "The debug adapter to use — \"renpy\" for these configurations."
+    },
+    "label": {
+      "type": "string",
+      "description": "Name of this configuration, shown in the debugger's session picker."
+    },
+    "request": {
+      "type": "string",
+      "enum": ["launch"],
+      "default": "launch",
+      "description": "Only \"launch\" is supported; attaching arrives with a future release."
+    },
+    "sdk": {
+      "type": "string",
+      "description": "Path to the Ren'Py SDK directory (the one containing renpy.py), or to renpy.sh inside it. Optional when $RENPY_SDK is set or a renpy-*-sdk directory sits in your home, Documents, Downloads, Desktop or Applications folder."
+    },
+    "project": {
+      "type": "string",
+      "description": "Ren'Py project base directory (the one containing game/). Defaults to the worktree root, or to the project containing the warp file."
+    },
+    "warp": {
+      "type": "string",
+      "description": "Start the game warped to this file:line, e.g. \"game/script.rpy:42\" or \"$ZED_FILE:$ZED_ROW\" to start at the cursor. Requires config.developer = True (the default while developing)."
+    },
+    "command": {
+      "type": "string",
+      "default": "run",
+      "description": "Ren'Py CLI command to execute; defaults to \"run\". Other useful values: \"lint\", \"compile\"."
+    },
+    "args": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "Extra arguments appended to the Ren'Py command line."
+    },
+    "env": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "default": {},
+      "description": "Environment variables for the game process, e.g. {\"RENPY_SKIP_SPLASHSCREEN\": \"1\"}."
+    },
+    "tcp_connection": {
+      "type": "object",
+      "description": "Standard Zed field; not used by the Ren'Py adapter, which speaks stdio."
+    }
+  },
+  "additionalProperties": true
+}

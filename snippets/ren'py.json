@@ -1,0 +1,309 @@
+{
+  "Label": {
+    "prefix": "label",
+    "body": [
+      "label ${1:start}:",
+      "    $0"
+    ],
+    "description": "A named place in the script"
+  },
+  "Menu": {
+    "prefix": "menu",
+    "body": [
+      "menu:",
+      "    \"${1:First choice}\":",
+      "        $2",
+      "    \"${3:Second choice}\":",
+      "        $0"
+    ],
+    "description": "A menu with two choices"
+  },
+  "Menu with caption": {
+    "prefix": "menuc",
+    "body": [
+      "menu:",
+      "    ${1:e} \"${2:What should I do?}\"",
+      "    \"${3:First choice}\":",
+      "        $4",
+      "    \"${5:Second choice}\":",
+      "        $0"
+    ],
+    "description": "A menu whose question stays on screen"
+  },
+  "Character": {
+    "prefix": "character",
+    "body": [
+      "define ${1:e} = Character(\"${2:Eileen}\", color=\"${3:#c8ffc8}\")",
+      "$0"
+    ],
+    "description": "Define a speaking character"
+  },
+  "Screen": {
+    "prefix": "screen",
+    "body": [
+      "screen ${1:name}():",
+      "    ${2:frame}:",
+      "        $0"
+    ],
+    "description": "A screen with a frame"
+  },
+  "Text button": {
+    "prefix": "textbutton",
+    "body": [
+      "textbutton \"${1:Label}\":",
+      "    action ${2:Return(\"${3:value}\")}",
+      "    $0"
+    ],
+    "description": "A text button with an action"
+  },
+  "Image button": {
+    "prefix": "imagebutton",
+    "body": [
+      "imagebutton:",
+      "    idle \"${1:idle.png}\"",
+      "    hover \"${2:hover.png}\"",
+      "    action ${3:Return(\"${4:value}\")}",
+      "    $0"
+    ],
+    "description": "An image button with idle and hover images"
+  },
+  "Layered image": {
+    "prefix": "layeredimage",
+    "body": [
+      "layeredimage ${1:eileen}:",
+      "    always:",
+      "        \"${2:base.png}\"",
+      "    group ${3:expression}:",
+      "        attribute ${4:happy} default:",
+      "            \"${5:happy.png}\"",
+      "        attribute ${6:sad}:",
+      "            \"${7:sad.png}\"",
+      "    $0"
+    ],
+    "description": "A layered image with a group of attributes"
+  },
+  "Transform / ATL": {
+    "prefix": "transform",
+    "body": [
+      "transform ${1:name}:",
+      "    ${2:xalign} ${3:0.5}",
+      "    ${4:yalign} ${5:1.0}",
+      "    $0"
+    ],
+    "description": "A transform with ATL properties"
+  },
+  "Style": {
+    "prefix": "style",
+    "body": [
+      "style ${1:name}${2: is default}${3:}:",
+      "    ${4:property} ${5:value}",
+      "    $0"
+    ],
+    "description": "A style block"
+  },
+  "Translate": {
+    "prefix": "translate",
+    "body": [
+      "translate ${1:language} ${2:strings}:",
+      "    old \"${3:Original text}\"",
+      "    new \"${4:Translated text}\"",
+      "    $0"
+    ],
+    "description": "A translation block"
+  },
+  "Python block": {
+    "prefix": "python",
+    "body": [
+      "python:",
+      "    $0"
+    ],
+    "description": "A python block"
+  },
+  "Init block": {
+    "prefix": "init",
+    "body": [
+      "init ${1:0}:",
+      "    $0"
+    ],
+    "description": "Run code at initialization time"
+  },
+  "Init python block": {
+    "prefix": "initpython",
+    "body": [
+      "init ${1:0} python:",
+      "    $0"
+    ],
+    "description": "An init block containing Python"
+  },
+  "Jump": {
+    "prefix": "jump",
+    "body": [
+      "jump ${1:start}",
+      "$0"
+    ],
+    "description": "Jump to a label"
+  },
+  "Call": {
+    "prefix": "call",
+    "body": [
+      "call ${1:start}",
+      "$0"
+    ],
+    "description": "Call a label and return"
+  },
+  "Call screen": {
+    "prefix": "callscreen",
+    "body": [
+      "call screen ${1:screen_name}",
+      "$0"
+    ],
+    "description": "Show a screen and wait for its result"
+  },
+  "If / else": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition}:",
+      "    $2",
+      "else:",
+      "    $0"
+    ],
+    "description": "A conditional with an else branch"
+  },
+  "Elif": {
+    "prefix": "elif",
+    "body": [
+      "elif ${1:condition}:",
+      "    $0"
+    ],
+    "description": "An additional conditional branch"
+  },
+  "Else": {
+    "prefix": "else",
+    "body": [
+      "else:",
+      "    $0"
+    ],
+    "description": "The fallback branch"
+  },
+  "While": {
+    "prefix": "while",
+    "body": [
+      "while ${1:condition}:",
+      "    $0"
+    ],
+    "description": "A while loop"
+  },
+  "Pause": {
+    "prefix": "pause",
+    "body": [
+      "pause ${1:1.0}",
+      "$0"
+    ],
+    "description": "Pause for a number of seconds"
+  },
+  "Scene": {
+    "prefix": "scene",
+    "body": [
+      "scene ${1:bg room}${2: with fade}",
+      "$0"
+    ],
+    "description": "Clear the scene and show an image"
+  },
+  "Show": {
+    "prefix": "show",
+    "body": [
+      "show ${1:eileen happy}${2: at center}",
+      "$0"
+    ],
+    "description": "Show an image or transform"
+  },
+  "Hide": {
+    "prefix": "hide",
+    "body": [
+      "hide ${1:eileen}${2: with dissolve}",
+      "$0"
+    ],
+    "description": "Hide an image"
+  },
+  "With": {
+    "prefix": "with",
+    "body": [
+      "with ${1:fade}",
+      "$0"
+    ],
+    "description": "Apply a transition"
+  },
+  "Play music": {
+    "prefix": "playmusic",
+    "body": [
+      "play music \"${1:audio/music.ogg}\"${2: fadein 1.0}",
+      "$0"
+    ],
+    "description": "Play a music track"
+  },
+  "Stop music": {
+    "prefix": "stopmusic",
+    "body": [
+      "stop music${1: fadeout 1.0}",
+      "$0"
+    ],
+    "description": "Stop the music channel"
+  },
+  "Voice": {
+    "prefix": "voice",
+    "body": [
+      "voice \"${1:audio/voice.ogg}\"",
+      "$0"
+    ],
+    "description": "Play a voice line"
+  },
+  "Define": {
+    "prefix": "define",
+    "body": [
+      "define ${1:name} = ${2:value}",
+      "$0"
+    ],
+    "description": "Define a variable at init time"
+  },
+  "Default": {
+    "prefix": "default",
+    "body": [
+      "default ${1:name} = ${2:value}",
+      "$0"
+    ],
+    "description": "Set a variable default that is saved"
+  },
+  "Assert": {
+    "prefix": "assert",
+    "body": [
+      "assert ${1:condition}",
+      "$0"
+    ],
+    "description": "Assert a condition"
+  },
+  "Testcase": {
+    "prefix": "testcase",
+    "body": [
+      "testcase ${1:name}:",
+      "    $0"
+    ],
+    "description": "A test case block"
+  },
+  "Python early": {
+    "prefix": "pythonearly",
+    "body": [
+      "python early:",
+      "    $0"
+    ],
+    "description": "Python that runs before the init phase"
+  },
+  "Region": {
+    "prefix": "region",
+    "body": [
+      "#region ${1:Name}",
+      "$0",
+      "#endregion"
+    ],
+    "description": "A foldable region"
+  }
+}
